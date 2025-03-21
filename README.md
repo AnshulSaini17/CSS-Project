@@ -12,12 +12,11 @@ This study analyzes 2,500+ Reddit posts to understand how people perceived remot
 - NRC Emotion Lexicon
 - Quarto for PDF reports
 
-## 🛠️ Setup Instructions
+## 📊 Sample Visual
 
-```bash
-git clone https://github.com/your-username/CSS-Project.git
-cd CSS-Project
-pip install -r requirements.txt
+### VADER Sentiment Distribution Before vs After COVID-19
+![VADER Sentiment Trends](Figures/vader_sentiment.png)
+![BERT vs VADER](Figures/vader_vs_bert_sentiment.png)
 
 ## 📈 Results Summary
 
@@ -26,3 +25,11 @@ pip install -r requirements.txt
 - **BERT sentiment** showed even stronger negative trends, with over 67% posts labeled negative post-pandemic.
 - Monthly sentiment trends indicated a gradual rise in dissatisfaction over time.
 - Remote work was initially seen as a benefit, but long-term effects such as isolation and burnout became prominent.
+
+## 🛠️ Setup Instructions
+
+```bash
+git clone https://github.com/your-username/CSS-Project.git
+cd CSS-Project
+pip install -r requirements.txt
+
