@@ -16,7 +16,12 @@ This study analyzes 2,500+ Reddit posts to understand how people perceived remot
 
 ### VADER Sentiment Distribution Before vs After COVID-19
 ![VADER Sentiment Trends](Figures/vader_sentiment.png)
+
+### BERT vs. VADER
 ![BERT vs VADER](Figures/vader_vs_bert_sentiment.png)
+
+### Word Cloud(Pre Covid and Post Covid)
+![Word Cloud](Figures/word_cloud.png)
 
 ## 📈 Results Summary
 
