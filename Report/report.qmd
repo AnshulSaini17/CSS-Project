@@ -1,0 +1,593 @@
+---
+title: "Sentiment Analysis of Remote Work Discussions on Reddit: Pre- and Post-COVID-19"
+author: "Anshul Saini"
+date: "March, 2025"
+warning: false
+message: false
+echo: false
+format: 
+  pdf:
+    documentclass: article
+    fontsize: 12pt
+    linestretch: 1
+    geometry: "margin=1in"
+    toc: false
+    number-sections: true
+---
+
+
+\vspace{2cm}
+
+**Course in Computational Social Science**
+
+**Professors: Christoph Kern \& Paul Bauer**
+
+**GitHub link: https://github.com/AnshulSaini17/CSS-Project**
+
+\vspace{2cm}
+
+
+
+# Abstract
+
+The COVID-19 pandemic significantly transformed daily life for millions worldwide, forcing offices to close for months and requiring employees to work remotely. For many, remote work was a new experience, making it essential to understand public sentiment toward this shift. This study applies sentiment analysis techniques to discussions on Reddit related to remote work during and after the pandemic. The focus is on determining whether employees perceive remote work as beneficial in terms of happiness and productivity. Approximately 2,500 Reddit posts were scraped and analyzed, revealing that most users expressed positive sentiments about working from home. This study explores whether remote work continues to be welcomed by employees post-pandemic.
+
+\newpage 
+\tableofcontents  
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}} 
+
+\newpage 
+
+# Introduction
+COVID-19 was first detected in Wuhan, China, in December 2019 (Chaolin et al., 2020) and rapidly spread across the globe. By February 28, 2020, approximately 80,000 cases had been reported, and this number surged to around 850,000 by March 31—representing nearly a tenfold increase (962.5%) in just one month. By mid-April, the number of confirmed cases had reached 2 million, according to the WHO COVID-19 Dashboard. In response to the rapid spread of the virus, governments worldwide imposed strict lockdowns, forcing many companies to restructure their operations and implement remote work policies (Daniels et al., 2001).
+
+As recommended by the World Health Organization (WHO), complete isolation was one of the most effective ways to prevent the spread of COVID-19 in the absence of treatment. Several countries, including India, France, and the United Kingdom, implemented some of the largest and most restrictive lockdowns in history. India, home to over 1 billion people, imposed a nationwide lockdown on March 25, 2020, for an initial period of three weeks, which was later extended until May 3, 2020.
+Before the COVID-19 outbreak, online work and remote learning were not widely adopted. However, the pandemic prompted companies and educational institutions to explore the opportunities and challenges associated with digital platforms and remote technologies. This shift required employees to completely adjust their way of working, raising concerns about their ability and willingness to adapt.
+
+Research has already explored various aspects of remote work, such as work-life balance (Fenner & Renn, 2010), employee motivation, and privacy concerns (Acquisti & Grossklags, 2005; Allen et al., 2015; Awad & Krishnan, 2006; Barsness et al., 2005). Additionally, scholars have identified key disciplines necessary to analyze telework through digital platforms (Palos-Sánchez, Saura, & Velicia-Martín, 2019). However, **there is limited research on how employees themselves perceive remote work based on large-scale, real-world discussions on digital platforms.**
+
+Thus, this study seeks to answer the question:
+
+**How has public sentiment toward remote work evolved during and after the COVID-19 pandemic?**
+
+To address this, I analyzed over 2,500 Reddit posts from December 2019 to January 2022 across multiple subreddits, including WorkFromHome, remotework, wfh, freelance, WorkOnline, overemployed, and RemoteJobs. Reddit provides a platform where millions of users share their opinions, making it a valuable resource for understanding real-time discussions. Previous studies have shown that Reddit has been widely used to express emotions and experiences during major events, including natural disasters (Soriano et al., 2016; Lent et al., 2017; Nair et al., 2017; Fu et al., 2016). By applying sentiment analysis techniques to these discussions, this study provides insights into whether employees view remote work positively or negatively in the long term.
+
+# Literature Review
+## Remote Work: Sentiments and Challenges in the Post-Pandemic Era
+The COVID-19 pandemic accelerated the adoption of remote work, fundamentally transforming organizational structures and employee experiences. While telework was initially seen as a temporary measure to ensure business continuity, its long-term impact on work-life balance, productivity, and job satisfaction has gained significant attention in recent research (Belzunegui-Eraso & Erro-Garcés, 2020). Remote work relies heavily on digital communication tools, which enable employees to collaborate effectively despite physical distances. However, these platforms also introduce challenges, such as increased surveillance, isolation, and digital exhaustion (Chadee et al., 2021).
+
+Social media platforms like **Twitter and Reddit** have played a crucial role in capturing public sentiment about remote work during and after the pandemic. A study by [Zhang, Yu, and Marin] (2021) analyzed tweets related to telework and found that while employees appreciated flexibility and reduced commute times, many reported experiencing **communication fatigue** due to excessive use of digital tools (Schmitt et al., 2021). Similarly, research highlights that text-based communication platforms can contribute to stress and burnout, while video-based interactions tend to mitigate these negative effects (Schmitt et al., 2021; Harris, 2003).
+
+At the same time, remote work offers environmental and economic benefits. By reducing daily commutes, telework decreases carbon emissions and transportation costs, contributing to sustainability efforts (Baruch, 2001). Moreover, organizations have recognized remote work as a strategy for attracting global talent, enhancing workforce diversity, and increasing operational flexibility (Haddud & McAllen, 2018). However, managers' ability to track employee performance remotely has also raised concerns about privacy and trust, with some companies implementing surveillance mechanisms to monitor remote workers (Fairweather, 1999).
+
+Despite these challenges, research suggests that **employees generally express positive sentiments toward remote work**, particularly regarding improved work-life balance and autonomy (Belzunegui-Eraso & Erro-Garcés, 2020). However, scholars argue that long-term telework success depends on addressing issues such as digital fatigue, workplace isolation, and the psychological impact of reduced in-person interactions (Richardson & Benbunan-Fich, 2011).
+
+This study builds upon these findings by analyzing **Reddit discussions** on remote work, providing a broader understanding of public perceptions and sentiment shifts over time. Unlike Twitter, where discussions tend to be short and event-driven, Reddit allows for deeper, structured discussions that reflect real-world experiences and long-term concerns regarding remote work policies.
+
+## Public Sentiment on Enforced Remote Work During COVID-19
+The sudden shift to remote work during the COVID-19 pandemic has significantly influenced employee experiences and public sentiment. A study by Zhang, Yu, and Marin (2021) analyzed over 1 million Twitter posts from March to July 2020 to examine how individuals perceived enforced remote work. Using natural language processing (NLP) techniques, the study conducted sentiment analysis and topic modeling to uncover trends in attitudes, challenges, and benefits associated with working from home.
+
+### Public Sentiment and Trends Over Time
+
+The sentiment analysis found that overall attitudes toward remote work were generally positive, though there were fluctuations, particularly during weekends when sentiment dipped slightly. The study identified key themes in remote work discussions, including home office setups, cybersecurity concerns, mental health, work-life balance, teamwork, and leadership challenges. Notably, mental health and work-life balance emerged as highly discussed topics, with both positive and negative perspectives.
+
+The research also highlighted the unique challenges of enforced remote work compared to voluntary remote work. Unlike traditional telecommuting, where employees have some level of choice and autonomy, the sudden transition during the pandemic created higher stress levels, increased work-life conflicts, and digital fatigue (Palumbo, 2020). Employees who previously worked in office environments struggled with the lack of social interaction and professional boundaries, leading to mixed opinions on remote work’s long-term feasibility.
+
+### Resource Gains and Losses in Remote Work
+
+The study applied Conservation of Resources (COR) theory, which suggests that employees are motivated to conserve and acquire resources that help them achieve work goals. Findings indicate that remote work led to resource gains such as flexibility, time savings, and autonomy, but also resource losses in the form of increased isolation, difficulty in collaboration, and digital exhaustion. Employees who had well-established digital work environments were more likely to experience benefits, while those without adequate resources (e.g., poor home office setups, unstable internet connections) faced significant difficulties.
+
+### Comparison to Twitter as a Sentiment Analysis Tool
+
+The study emphasized the advantages of using Twitter as a data source for analyzing public sentiment on remote work. While Twitter offers real-time, large-scale insights, the research acknowledged its limitations, including potential demographic biases and the difficulty in distinguishing between remote workers and non-remote workers. This highlights an important research gap that platforms like Reddit, which encourage longer, more in-depth discussions, can help address.
+
+### Relevance to the Present Study
+
+The findings from this research are directly relevant to the current study, which focuses on sentiment analysis of Reddit discussions on remote work. Unlike Twitter, where posts are short and event-driven, Reddit allows users to engage in deeper, more structured discussions about their experiences, potentially offering richer insights into long-term perceptions of remote work. By analyzing Reddit data, this study aims to build on the existing literature by exploring whether public sentiment on remote work has shifted in the post-pandemic period and what factors contribute to positive or negative attitudes toward remote work.
+
+# Methodology
+## The Dataset
+Reddit, with approximately **97.2 million daily active users**, serves as a major platform for public discussions on various topics, including remote work. For this study, I collected **2,500 Reddit posts** from **2018 to 2022** using the **Reddit API and the PRAW** (Python Reddit API Wrapper) library. The dataset includes discussions from **beforeCOVID-19 (2018–2019)** and during and **after the pandemic (2019–2022)** to examine whether sentiment toward remote work has shifted over time. To enrich the dataset, I also scraped comments on these posts, providing a more comprehensive analysis of user sentiment.
+
+Following data collection, text preprocessing was conducted using the Natural Language Toolkit (NLTK) in Python. This process involved:
+
+- Removing URLs, mentions, and numbers: URLs, user mentions (e.g., "@username"), and numerical values were removed, as they do not contribute to sentiment analysis.
+
+- Removing whitespace, punctuation, and stop words: Extra spaces, punctuation marks, and common stop words (e.g., "the," "is," "and") were removed to focus on meaningful content.
+
+- Converting text to lowercase: All text was converted to lowercase to ensure uniformity (e.g., "Work" and "work" are treated as the same word).
+
+- Tokenization: The text was split into individual words (tokens) to facilitate further processing.
+
+- Lemmatization: Words were reduced to their base forms (e.g., "working" → "work") to normalize variations and improve sentiment classification accuracy.
+
+For sentiment analysis, I applied BERT (Bidirectional Encoder Representations from Transformers) and VADER (Valence Aware Dictionary and Sentiment Reasoner) to assess public sentiment toward remote work. These tools enabled the classification of user opinions into positive, negative, or neutral sentiments. By comparing pre-pandemic and post-pandemic sentiment trends, this study aims to determine whether attitudes toward remote work have evolved over time.
+
+### Cleaning the Dataset
+Before performing sentiment analysis, it was essential to preprocess and clean the collected textual data to ensure accuracy and consistency. The raw dataset contained various forms of noise, including URLs, punctuation, special characters, stopwords, and redundant whitespace. The cleaning process was carried out using Natural Language Toolkit (NLTK) and spaCy in Python, following these steps:
+
+1.	Lowercasing: All text was converted to lowercase to maintain uniformity in word representation.
+2.	Removing URLs, Mentions, and Numbers: Any URLs, user mentions (e.g., "@username"), and numerical values were removed as they do not contribute to sentiment analysis.
+3.	Tokenization: The text was broken down into individual words (tokens) to facilitate further processing.
+4.	Removing Stopwords: Common words such as "the," "is," and "and," which do not hold significant meaning in sentiment detection, were removed.
+5.	Punctuation Removal: All punctuation marks were stripped from the text to eliminate unnecessary symbols.
+6.	Lemmatization: Words were reduced to their base forms (e.g., "working" → "work") to normalize the text and improve the effectiveness of sentiment classification.
+7.	Whitespace Standardization: Extra spaces were removed to maintain text uniformity.
+
+This cleaning process was applied to both pre-pandemic (2018–2019) and post-pandemic (2019–2022) datasets to ensure a fair comparison of sentiment trends over time. The cleaned text was stored in a new column, allowing for further analysis while preserving the original raw data.
+```{python fig-cap="Word Clouds for Pre- and Post-COVID Remote Work Discussions"}
+import pandas as pd
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+df_pre = pd.read_csv('pre_covid_remote_work_cleaned.csv')
+df_post = pd.read_csv('post_covid_remote_work_cleaned.csv')
+
+# Function to generate and display word cloud
+def generate_wordcloud(text_series, ax, title):
+    text = " ".join(text_series.dropna())
+    wordcloud = WordCloud(width=800, height=400, background_color="white", colormap="viridis").generate(text)
+    ax.imshow(wordcloud, interpolation="bilinear")
+    ax.axis("off")
+    ax.set_title(title, fontsize=14)
+
+# Check if cleaned_text column exists
+if "cleaned_text" in df_pre.columns and "cleaned_text" in df_post.columns:
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))  # Side-by-side plot with adjusted size
+
+    generate_wordcloud(df_pre["cleaned_text"], axes[0], "Pre-COVID Remote Work Discussions")
+    generate_wordcloud(df_post["cleaned_text"], axes[1], "Post-COVID Remote Work Discussions")
+
+    plt.tight_layout()
+    plt.show()
+else:
+    print("Column 'cleaned_text' not found. Ensure data preprocessing is complete.")
+
+```
+## Sentiment Analysis and Emotion Detection
+### Sentiment Analysis Algorithms
+Sentiment analysis is a widely used natural language processing (NLP) technique that aims to classify textual data into different sentiment categories, typically positive, negative, or neutral. It has been extensively applied to user-generated content (UGC) on social media platforms to assess public opinion and emotional trends (Cui et al., 2016). In this study, sentiment analysis is used to examine discussions about remote work before, during, and after COVID-19, enabling a deeper understanding of how employees perceive this shift.
+To perform sentiment analysis, we employed two approaches:
+
+1.	VADER (Valence Aware Dictionary and sEntiment Reasoner) – a lexicon-based method that assigns predefined sentiment scores to words.
+2.	BERT (Bidirectional Encoder Representations from Transformers) – a deep learning-based model that understands context and sentiment nuances in sentences.
+
+These methods were chosen due to their complementary strengths: while VADER is effective for short and informal text (e.g., Reddit comments), BERT provides a deeper contextual understanding of longer discussions.
+
+### VADER (Valence Aware Dictionary and sEntiment Reasoner)
+Text Sentiment Analysis is a really big field with a lot of academic literature behind it. The Lexcial method and the machine learning technique, however, are essentially its two main instruments. Lexical approaches, such as VADER, map words to sentiment using a pre-built lexicon or "dictionary of sentiment," allowing sentiment assessment of phrases and sentences—categorized as negative, neutral, or positive, or scored numerically—without requiring labeled training data. In contrast, machine learning approaches rely on training models with previously labeled data to predict or classify the sentiment of new text, offering improved accuracy with larger datasets but necessitating the availability of pre-labeled examples, unlike the self-contained nature of lexical methods.
+
+VADER is a rule-based lexicon method designed specifically for analyzing social media text (Cambria et al., 2016). It relies on a predefined sentiment dictionary that assigns sentiment values to individual tokens, incorporating polarity scores that range from -1 (negative) to +1 (positive) .
+How VADER Works:
+
+- VADER analyzes words based on predefined lexicons, assigning positive, negative, or neutral scores.
+
+- It considers intensifiers, punctuation, and capitalization (e.g., “GREAT” has a stronger sentiment than “great”).
+
+- The final compound sentiment score is computed as the mean sentiment of all tokens in a given text.
+
+Because VADER accounts for sentiment scores influenced by capitalization and punctuation, especially exclamation marks, I used uncleaned data and still achieved a good score from VADER.
+
+### BERT (Bidirectional Encoder Representations from Transformers)
+BERT is a deep learning-based NLP model that excels at understanding the context of words in a sentence (Devlin et al., 2019). Unlike VADER, which assigns fixed sentiment scores, BERT utilizes contextual embeddings and attention mechanisms to capture the sentiment of entire sentences. 
+How BERT Works:
+
+- BERT is trained on 2 tasks Masked Language modelling and Next sentence prediction. It processes text bidirectionally, meaning it considers the full sentence context rather than analyzing words in isolation.
+
+- The model is pre-trained on large datasets and can be fine-tuned on sentiment classification tasks.
+
+- It is capable of detecting nuanced sentiment expressions, including sarcasm, irony, and negation.
+
+In this study, I use a pre-trained BERT model for sentiment analysis from Hugging Face, specifically distilbert-base-uncased-finetuned-sst-2-english. This model is fine-tuned on the Stanford Sentiment Treebank (SST-2) dataset and classifies text into two categories: Positive and Negative.
+Since BERT has a maximum token limit of 512, all text exceeding this limit was truncated to 512 tokens before analysis.
+To include a Neutral sentiment category, I applied the following rule:
+
+- If the model’s confidence score is greater than 0.9 and the predicted label is "POSITIVE", the sentiment is classified as Positive.
+
+- If the model’s confidence score is greater than 0.9 and the predicted label is "NEGATIVE", the sentiment is classified as Negative.
+
+- For all other cases (i.e., when the confidence score is ≤ 0.9), the sentiment is classified as Neutral.
+
+This approach ensures a more balanced classification, as BERT’s default implementation does not include a Neutral category.
+
+## Emotion Detection Usingg NRC Lexion
+While sentiment analysis categorizes text as positive, negative, or neutral, emotion detection provides deeper insights by identifying specific emotions expressed in the text. This is crucial for understanding how employees feel about remote work beyond just polarity.
+For this study, the NRC Emotion Lexicon (Mohammad & Turney, 2013) was used to classify Reddit discussions into eight primary emotions:
+
+- Positive Emotions → Joy, Trust, Anticipation, and Surprise
+
+- Negative Emotions → Anger, Fear, Sadness, and Disgust
+
+This method allows us to determine whether remote work discussions were driven by positive or negative emotions, as well as track how emotional trends evolved over time.
+
+#### NRC EMotion Lexion
+The NRC Emotion Lexicon is a manually curated dictionary that associates words with eight emotion categories. Unlike general sentiment analysis models, NRC focuses on word-level emotional meaning rather than overall polarity.
+How the NRC Lexicon Works
+1.	Each word in the dataset is compared to the NRC Emotion Lexicon, which contains 14,000+ words labelled with emotions.
+2.	If a word matches an entry in the lexicon, it is assigned to one or more emotions.
+3.	The final emotion score for each text is calculated by aggregating all detected emotional words.
+For example:
+
+- "excited" → Anticipation, Joy
+
+- "frustrated" → Anger, Disgust
+
+- "uncertain" → Fear
+
+# Results:
+## NRC Lexion
+Understanding the emotional response to remote work is essential in assessing how employees' attitudes evolved before and after the COVID-19 pandemic. Unlike sentiment analysis, which categorizes text as positive, negative, or neutral, emotion detection provides a deeper understanding by classifying emotions into eight primary categories: joy, trust, anticipation, surprise, fear, anger, sadness, and disgust, along with positive and negative sentiment classifications.
+
+```{python #fig-1 fig-cap="Emotion distribution pre- and post-COVID remote work discussions."}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from collections import Counter
+import re
+
+# Load datasets
+df_pre = pd.read_csv('pre_covid_remote_work_cleaned.csv')
+df_post = pd.read_csv('post_covid_remote_work_cleaned.csv')
+
+# Load NRC Emotion Lexicon
+def load_nrc_lexicon(file_path=r"data\NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt"):
+    nrc_lexicon = {}
+    with open(file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            parts = line.strip().split("\t")
+            if len(parts) != 3:
+                continue
+
+            word, emotion, value = parts
+            if emotion not in nrc_lexicon:
+                nrc_lexicon[emotion] = set()
+            if value == "1":
+                nrc_lexicon[emotion].add(word)
+
+    return nrc_lexicon
+
+nrc_lexicon = load_nrc_lexicon()
+
+# Extract emotions from text
+def extract_emotions(text, nrc_lexicon):
+    words = re.findall(r'\b\w+\b', text.lower())
+    emotion_counts = Counter()
+    for word in words:
+        for emotion, words_set in nrc_lexicon.items():
+            if word in words_set:
+                emotion_counts[emotion] += 1
+    return emotion_counts
+
+# Calculate emotion percentages
+def get_emotion_distribution(df):
+    total_counts = Counter()
+    for text in df["cleaned_text"].dropna():
+        emotions = extract_emotions(text, nrc_lexicon)
+        total_counts.update(emotions)
+
+    total_words = sum(total_counts.values())
+    return {emotion: (count / total_words) * 100 for emotion, count in total_counts.items()} if total_words else {}
+
+# Prepare data
+pre_emotions = get_emotion_distribution(df_pre)
+post_emotions = get_emotion_distribution(df_post)
+
+# Convert to DataFrame
+df_pre_emotions_df = pd.DataFrame(pre_emotions.items(), columns=["Emotion", "Percentage"])
+df_post_emotions_df = pd.DataFrame(post_emotions.items(), columns=["Emotion", "Percentage"])
+
+# Side-by-side plots
+fig, axes = plt.subplots(1, 2, figsize=(18, 5), sharey=True)
+
+# Pre-COVID plot
+sns.barplot(x="Emotion", y="Percentage", data=df_pre_emotions_df, color="blue", alpha=0.7, ax=axes[0])
+axes[0].set_title("Emotion Distribution (Pre-COVID)")
+axes[0].set_xlabel("Emotions")
+axes[0].set_ylabel("Percentage (%)")
+axes[0].tick_params(axis='x', rotation=45)
+for p in axes[0].patches:
+    axes[0].annotate(f'{p.get_height():.1f}%',
+                     (p.get_x() + p.get_width() / 2., p.get_height()),
+                     ha='center', va='bottom', fontsize=9, color='black')
+
+# Post-COVID plot
+sns.barplot(x="Emotion", y="Percentage", data=df_post_emotions_df, color="orange", alpha=0.7, ax=axes[1])
+axes[1].set_title("Emotion Distribution (Post-COVID)")
+axes[1].set_xlabel("Emotions")
+axes[1].tick_params(axis='x', rotation=45)
+for p in axes[1].patches:
+    axes[1].annotate(f'{p.get_height():.1f}%',
+                     (p.get_x() + p.get_width() / 2., p.get_height()),
+                     ha='center', va='bottom', fontsize=9, color='black')
+
+plt.tight_layout()
+plt.show()
+```
+
+As seen in the figure, before the pandemic, positive emotions dominated remote work discussions, with 26.3% of words expressing positive sentiment. After the pandemic , the share of positive sentiment increased to 28.4%, suggesting that employees developed a more optimistic outlook toward remote work over time.
+However, negative sentiment also saw an increase—rising from 9.5% pre-pandemic to 10.6% post-pandemic. This suggests that, while remote work became more accepted, it also brought new challenges, such as burnout, lack of work-life balance, and social isolation.
+Trust in remote work remained stable, but anticipation decreased, suggesting that uncertainty about the long-term effects of remote work increased. Another thing we can notice is that the negative emotions (fear, sadness, and disgust) increased slightly, indicating growing concerns about remote work-related issues.
+
+## Sentiment Analysis
+### Vader Results
+Sentiment analysis provides insights into how people perceive remote work over time. Using VADER (Valence Aware Dictionary and sEntiment Reasoner), sentiment scores were calculated for Reddit discussions before and after the COVID-19 pandemic. The sentiment distribution was classified into three categories: Positive, Neutral, and Negative.
+The figure illustrates the percentage breakdown of sentiment before and after the pandemic.
+```{python #fig-2 fig-cap="Vader Sentiment Comparison: Pre vs Post Pandemic" }
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+analyzer = SentimentIntensityAnalyzer()
+
+# Load datasets
+df_pre = pd.read_csv('pre_covid_remote_work_cleaned.csv')
+df_post = pd.read_csv('post_covid_remote_work_cleaned.csv')
+
+def get_sentiment(text):
+    if pd.isna(text) or not str(text).strip():
+        return "Neutral"
+    score = analyzer.polarity_scores(str(text))["compound"]
+    if score > 0.05:
+        return "Positive"
+    elif score < -0.05:
+        return "Negative"
+    return "Neutral"
+
+# Apply sentiment function safely
+df_post["vader_sentiment"] = df_post["text"].apply(get_sentiment)
+df_pre["vader_sentiment"] = df_pre["text"].apply(get_sentiment)
+
+pre_sentiment_counts = df_pre["vader_sentiment"].value_counts(normalize=True) * 100
+post_sentiment_counts = df_post["vader_sentiment"].value_counts(normalize=True) * 100
+
+# Create DataFrame for comparison
+sentiment_comparison = pd.DataFrame({
+    "Pre-Pandemic": pre_sentiment_counts, 
+    "Post-Pandemic": post_sentiment_counts
+}).fillna(0)
+
+# Plot side-by-side bar chart with labels
+ax = sentiment_comparison.plot(kind="bar", colormap="coolwarm", rot=0, figsize=(6, 4))
+
+# Add percentage labels on top of bars
+for container in ax.containers:
+    ax.bar_label(container, fmt="%.1f%%", label_type="edge", fontsize=10)
+
+plt.title("Vader Sentiment Comparison: Pre vs. Post Pandemic")
+plt.xlabel("Sentiment")
+plt.ylabel("Percentage (%)")
+plt.legend(title="Period")
+plt.tight_layout()
+plt.show()
+
+```
+The sentiment analysis using VADER reveals a shift in perceptions of remote work before and after the COVID-19 pandemic. The percentage of positive sentiment decreased from 61.0% pre-pandemic to 53.6% post-pandemic, indicating a decline in enthusiasm. While remote work was initially seen as a flexible and appealing alternative, long-term adoption brought challenges such as burnout, isolation, and difficulties in maintaining work-life balance, which may have contributed to this decline.
+Conversely, negative sentiment increased from 14.2% to 21.8%, suggesting growing dissatisfaction with aspects of remote work, including lack of collaboration, employer surveillance, and career growth concerns. The proportion of neutral sentiment remained nearly unchanged (24.7% pre-pandemic vs. 24.5% post-pandemic), indicating that some discussions remained factual rather than opinionated. These findings suggest that while remote work initially gained widespread approval, extended exposure to remote work realities led to more mixed and critical discussions.
+
+### Bert Results
+The figure below illustrates the percentage breakdown of sentiment in discussions about remote work before and after the pandemic. The results indicate a dominance of negative sentiment in both periods, with negative sentiment increasing from 65.4% pre-pandemic to 67.6% post-pandemic. This suggests that while remote work was already associated with some challenges before COVID-19, the difficulties intensified in the post-pandemic era. Positive sentiment declined from 24.4% to 21.5%, reflecting a drop in enthusiasm, potentially due to the long-term effects of remote work, such as burnout, lack of social interaction, and concerns over career advancement
+To gain a deeper understanding of how sentiment toward remote work evolved over time, I analyzed sentiment trends month by month. This temporal analysis allows us to observe whether discussions became more positive or negative as remote work became more established, providing further insights into the shifting perceptions before and after the pandemic.
+
+```{python #fig-3 fig-cap="BERT Sentiment Comparison:Pre vs Post Pandemic" }
+import os
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+from transformers import pipeline
+import pandas as pd
+import matplotlib.pyplot as plt
+
+sentiment_pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+
+# Load datasets
+df_pre = pd.read_csv('pre_covid_remote_work_cleaned.csv')
+df_post = pd.read_csv('post_covid_remote_work_cleaned.csv')
+
+# Sentiment prediction function
+def bert_predict_title(title):
+    if pd.isna(title) or not title.strip():
+        return "Neutral"
+    result = sentiment_pipeline(title[:512])[0]
+    score, label = result["score"], result["label"]
+    if label == "POSITIVE" and score > 0.9:
+        return "Positive"
+    elif label == "NEGATIVE" and score > 0.9:
+        return "Negative"
+    else:
+        return "Neutral"
+
+# Apply BERT sentiment
+df_pre["bert_sentiment"] = df_pre["title"].apply(bert_predict_title)
+df_post["bert_sentiment"] = df_post["title"].apply(bert_predict_title)
+
+# Sentiment distribution
+pre_counts = df_pre["bert_sentiment"].value_counts(normalize=True) * 100
+post_counts = df_post["bert_sentiment"].value_counts(normalize=True) * 100
+
+# Plot
+bert_comparison = pd.DataFrame({
+    "Pre-Pandemic": pre_counts,
+    "Post-Pandemic": post_counts
+}).fillna(0)
+
+ax = bert_comparison.plot(kind="bar", colormap="coolwarm", rot=0, figsize=(7, 5))
+
+# Labels
+for container in ax.containers:
+    ax.bar_label(container, fmt="%.1f%%", fontsize=11)
+
+plt.title("BERT Sentiment Comparison: Pre vs. Post Pandemic")
+plt.xlabel("Sentiment")
+plt.ylabel("Percentage (%)")
+plt.legend(title="Period")
+plt.tight_layout()
+plt.show()
+
+```
+
+To dig deeper into the anaylsis, I plotted a line chart showing the monthly sentiment trends for pre-pandemic (2018-2019) and post-pandemic (2022-2025) discussions. Before the pandemic, negative sentiment gradually increased, indicating growing concerns about remote work challenges, while positive sentiment remained relatively low, with only occasional spikes, suggesting that remote work was not widely celebrated. In contrast, post-pandemic trends show a sharp rise in negative sentiment, especially after the initial adaptation phase, likely due to work-life balance issues, digital exhaustion, and reduced team cohesion. Although positive sentiment exhibited a slow upward trend, possibly reflecting improved adaptability and hybrid work models, negative discussions consistently remained dominant, reinforcing the idea that remote work became a more divisive topic over time.
+```{python}
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Load datasets
+df_pre = pd.read_csv('pre_covid_BV.csv')
+df_post = pd.read_csv('post_covid_BV.csv')
+
+# Convert timestamp to datetime
+df_pre["date"] = pd.to_datetime(df_pre["timestamp"], errors='coerce')
+df_post["date"] = pd.to_datetime(df_post["timestamp"], errors='coerce')
+
+# Drop missing dates
+df_pre = df_pre.dropna(subset=["date"])
+df_post = df_post.dropna(subset=["date"])
+
+# Extract month
+df_pre["month"] = df_pre["date"].dt.to_period("M")
+df_post["month"] = df_post["date"].dt.to_period("M")
+
+# Group by sentiment trends
+pre_trend = df_pre.groupby(["month", "bert_sentiment"]).size().unstack().fillna(0)
+post_trend = df_post.groupby(["month", "bert_sentiment"]).size().unstack().fillna(0)
+
+# Define colors
+pre_colors = {"Positive": "#FFA500", "Neutral": "#FFD700", "Negative": "#FF6347"}       
+post_colors = {"Positive": "#003366", "Neutral": "#4682B4", "Negative": "#800080"}      
+
+# Create subplots
+fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+
+# Pre-COVID Plot
+for sentiment in pre_trend.columns:
+    axes[0].plot(pre_trend.index.to_timestamp(), pre_trend[sentiment],
+                 label=sentiment,
+                 color=pre_colors.get(sentiment, "gray"),
+                 marker="o", linewidth=2)
+axes[0].set_title("Pre-COVID BERT Sentiment Trends", fontsize=12)
+axes[0].set_xlabel("Month", fontsize=10)
+axes[0].set_ylabel("Tweet Count", fontsize=10)
+axes[0].tick_params(axis='x', rotation=45)
+axes[0].grid(True, linestyle="--", alpha=0.5)
+axes[0].legend(title="Sentiment", fontsize=9)
+
+# Post-COVID Plot
+for sentiment in post_trend.columns:
+    axes[1].plot(post_trend.index.to_timestamp(), post_trend[sentiment],
+                 label=sentiment,
+                 color=post_colors.get(sentiment, "gray"),
+                 marker="o", linewidth=2)
+axes[1].set_title("Post-COVID BERT Sentiment Trends", fontsize=12)
+axes[1].set_xlabel("Month", fontsize=10)
+axes[1].tick_params(axis='x', rotation=45)
+axes[1].grid(True, linestyle="--", alpha=0.5)
+axes[1].legend(title="Sentiment", fontsize=9)
+
+# Overall layout
+plt.suptitle("Monthly Sentiment Trends on Remote Work (BERT Model)", fontsize=14, y=1.05)
+plt.tight_layout()
+plt.show()
+
+
+```
+
+
+While BERT provided a deeper understanding of sentiment shifts over time, it is also important to compare these results with VADER to assess how different sentiment analysis approaches interpret remote work discussions. The graph below is the sentiment distribution between VADER vs BERT.
+
+```{python #fig-4 fig-cap = "Sentiment Distribution: VADER vs. BERT" }
+df_pre = pd.read_csv('post_covid_BV.csv')
+df_post = pd.read_csv('pre_covid_BV.csv')
+
+post_vader_counts = df_post["vader_sentiment"].value_counts().reindex(["Positive", "Negative", "Neutral"], fill_value=0)
+post_bert_counts = df_post["bert_sentiment"].value_counts().reindex(["Positive", "Negative", "Neutral"], fill_value=0)
+pre_vader_counts = df_pre["vader_sentiment"].value_counts().reindex(["Positive", "Negative", "Neutral"], fill_value=0)
+pre_bert_counts = df_pre["bert_sentiment"].value_counts().reindex(["Positive", "Negative", "Neutral"], fill_value=0)
+
+# Percentages
+post_total = len(df_post)
+pre_total = len(df_pre)
+post_vader_pct = (post_vader_counts / post_total * 100).round(2)
+post_bert_pct = (post_bert_counts / post_total * 100).round(2)
+pre_vader_pct = (pre_vader_counts / pre_total * 100).round(2)
+pre_bert_pct = (pre_bert_counts / pre_total * 100).round(2)
+
+# Combine into a table
+dist_table = pd.DataFrame({
+    "Pre-COVID VADER (%)": pre_vader_pct,
+    "Pre-COVID BERT (%)": pre_bert_pct,
+    "Post-COVID VADER (%)": post_vader_pct,
+    "Post-COVID BERT (%)": post_bert_pct
+})
+
+
+# Prepare data for plotting
+plot_data = pd.DataFrame({
+    "Sentiment": ["Positive", "Negative", "Neutral"] * 4,
+    "Percentage": list(pre_vader_pct) + list(pre_bert_pct) + list(post_vader_pct) + list(post_bert_pct),
+    "Model": ["VADER"] * 3 + ["BERT"] * 3 + ["VADER"] * 3 + ["BERT"] * 3,
+    "Period": ["Pre-COVID"] * 6 + ["Post-COVID"] * 6
+})
+
+# Visualize with catplot (faceted by Period)
+g = sns.catplot(
+    x="Sentiment",
+    y="Percentage",
+    hue="Model",
+    col="Period",
+    data=plot_data,
+    kind="bar",
+    height=4,
+    aspect=1.2,
+    palette="muted",
+    hue_order=["VADER", "BERT"],
+    col_order=["Pre-COVID", "Post-COVID"]
+)
+g.set_titles("{col_name}")
+g.fig.suptitle("Sentiment Distribution: VADER vs. BERT (Pre- vs. Post-COVID)", y=1.05)
+plt.tight_layout()
+plt.show()
+```
+
+Notably, VADER tends to classify a higher percentage of discussions as positive compared to BERT, while BERT identifies more negative sentiment. This discrepancy suggests that BERT, being a deep-learning-based model, captures nuanced sentiment variations better than VADER, which relies on a predefined lexicon.
+
+
+\newpage
+
+# Conclusion
+This study analyzed sentiment trends in remote work discussions before and after the COVID-19 pandemic, using VADER and BERT for sentiment classification. The results indicate a shift in sentiment over time, with a decline in positive sentiment and a rise in negative discussions post-pandemic. While remote work was initially seen as a flexible and attractive alternative, long-term adoption amplified concerns about work-life balance, digital exhaustion, and reduced collaboration.
+Temporal sentiment analysis revealed that negative sentiment gradually increased over time, particularly post-pandemic, as companies transitioned to hybrid or permanent remote work models. Additionally, the comparison between VADER and BERT highlighted that BERT classified a higher proportion of discussions as negative, capturing nuanced dissatisfaction more effectively than lexicon-based approaches. This suggests that while VADER provides a broad sentiment overview, deep-learning models like BERT offer more granular insights into evolving workplace attitudes.
+Overall, the findings suggest that while remote work remains a valuable employment model, its long-term viability depends on addressing key challenges such as burnout, social isolation, and workplace surveillance concerns. Future research could explore how different work policies, company cultures, and individual experiences influence these sentiment trends and whether hybrid models offer a balanced solution to the challenges of fully remote work.
+
+\newpage
+
+# References
+
+- Acquisti, A., & Grossklags, J. (2005). Privacy and rationality in individual decision making. *IEEE Security & Privacy*, 3(1), 26–33.
+
+- Allen, T. D., Golden, T. D., & Shockley, K. M. (2015). How effective is telecommuting? Assessing the status of our scientific findings. *Psychological Science in the Public Interest*, 16(2), 40–68.
+
+- Awad, N. F., & Krishnan, M. S. (2006). The personalization privacy paradox: An empirical evaluation of information transparency and the willingness to be profiled online for personalization. *MIS Quarterly*, 30(1), 13–28.
+
+- Baccianella, S., Esuli, A., & Sebastiani, F. (2010). SentiWordNet 3.0: An enhanced lexical resource for sentiment analysis and opinion mining. *Proceedings of LREC 2010*, 2200–2204.
+
+- Barsness, Z. I., Diekmann, K. A., & Seidel, M. L. (2005). Motivation and trust: A study of remote workers. *Journal of Business and Psychology*, 19(4), 507–525.
+
+- Chadee, D., Ren, S., & Tang, G. (2021). Remote work, digital platform use, and wellbeing during the COVID-19 pandemic: Evidence from China. *Information Technology & People*, 34(3), 865–887.
+
+- Daniels, K., Lamond, D., & Standen, P. (2001). Teleworking: Frameworks for organizational research. *Journal of Management Studies*, 38(8), 1151–1185.
+
+- Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. *Proceedings of the 2019 Conference of NAACL*, 4171–4186.
+
+- Fairweather, N. B. (1999). *Surveillance in employment: The case of teleworking*. Routledge.
+
+- Fenner, G. H., & Renn, R. W. (2010). Technology-assisted supplemental work: Construct definition and a research framework. *Human Resource Management Review*, 20(2), 82–94.
+
+- Fu, K. W., Liang, H., Saroha, N., Tse, Z. T. H., Ip, P., & Fung, I. C.-H. (2016). How people react to Zika virus outbreaks on Twitter? A computational content analysis. *American Journal of Infection Control*, 44(12), 1700–1702.
+
+- Haddud, A., & McAllen, D. (2018). Digital workplace management: Exploring aspects related to culture, innovation, and leadership. *World Journal of Entrepreneurship, Management and Sustainable Development*, 14(3), 260–272.
+
+- Harris, L. (2003). Home-based teleworking and the employment relationship: Managerial challenges and dilemmas. *Personnel Review*, 32(4), 422–437.
+
+- Huang, C., Wang, Y., Li, X., Ren, L., Zhao, J., Hu, Y., Zhang, L., Fan, G., Xu, J., & Gu, X. (2020). Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China. *The Lancet*, 395(10223), 497–506.
+
+- Lent, R. W., Ireland, G. W., Penn, L. T., Morris, T. R., & Sappington, R. (2017). Sources of self-efficacy and outcome expectations for career exploration and decision-making: A test of the social cognitive model of career self-management. *Journal of Vocational Behavior*, 99, 107–117.
+
+- Mohammad, S. M., & Turney, P. D. (2013). Crowdsourcing a word–emotion association lexicon. *Computational Intelligence*, 29(3), 436–465.
+
+- Nair, L. R., Kotha, S., & Rao, P. H. (2017). Exploring socio-emotional dimensions using online social networks: A case of floods in India. *Procedia Computer Science*, 122, 160–167.
+
